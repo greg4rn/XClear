@@ -71,7 +71,7 @@ To check if your Android phone is correctly connected to the PC via ADB, follow 
 1. Clone the repository or download the script.
 2. Open your terminal.
 3. Navigate to the directory where the script is located.
-4. Run the script with the command `python script_name.py`.
+4. Run the script with the command `python adb_fsrp_en.py`.
 5. Follow the instructions in the interactive menu.
 
 ## Contributions
