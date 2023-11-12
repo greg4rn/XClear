@@ -71,7 +71,7 @@ Para comprobar si tu teléfono Android está correctamente conectado a la PC a t
 1. Clona el repositorio o descarga el script.
 2. Abre tu terminal.
 3. Navega al directorio donde se encuentra el script.
-4. Ejecuta el script con el comando `python nombre_del_script.py`.
+4. Ejecuta el script con el comando `python adb_fsrp_es.py`.
 5. Sigue las instrucciones en el menú interactivo.
 
 ## Contribuciones
