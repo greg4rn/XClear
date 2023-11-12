@@ -13,7 +13,7 @@
 
 ## English version 
 
-Visit the next link: [Resources Repository](https://github.com/greg4rn/resources)
+Visit the next link: [Resources](https://github.com/greg4rn/resources)
 
 ## Introducción
 
