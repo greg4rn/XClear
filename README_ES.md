@@ -11,6 +11,10 @@
 7. [Uso](#uso)
 8. [Contribuciones](#contribuciones)
 
+## English version 
+
+Visit the repository on GitHub: [Resources Repository](https://github.com/greg4rn/resources)
+
 ## Introducción
 
 Este script proporciona una interfaz para gestionar aplicaciones en dispositivos Android utilizando ADB (Android Debug Bridge). Permite forzar la detención y restablecer permisos en todas las aplicaciones, solo del usuario o solo del sistema.
