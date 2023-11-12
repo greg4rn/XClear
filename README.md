@@ -11,6 +11,10 @@
 7. [Usage](#usage)
 8. [Contributions](#contributions)
 
+## Versión en Español
+
+Visita el siguiente enlace: [Recursos]([https://github.com/greg4rn/resources](https://github.com/greg4rn/resources/blob/main/README_ES.md))
+
 ## Introduction
 
 This script provides an interface for managing applications on Android devices using ADB (Android Debug Bridge). It allows forcing the stop and resetting permissions for all applications, only for the user, or only for the system.
