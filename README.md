@@ -13,7 +13,7 @@
 
 ## Versión en Español
 
-Visita el siguiente enlace: [Recursos](https://github.com/greg4rn/resources/blob/main/README_ES.md)
+Visita el siguiente enlace: [Recursos](https://github.com/greg4rn/XClear/blob/main/Espa%C3%B1ol/README_ES.md)
 
 ## Introduction
 
