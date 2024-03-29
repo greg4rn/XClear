@@ -88,13 +88,12 @@ chmod +x exclr_es.sh
     En tu terminal Android debe aparecer una ventana que debes permitirle el acceso 2 veces (Puedes marcar la casilla para permitir siempre el acceso desde ese PC, pero no lo recomiendo)
 ### En Termux
 1. Desde Android ingresa a Termux y ejecuta los siguientes comandos (aquí debes ingresar la IP estática que definiste en el Wi-Fi de tu Android.)
+**Ejemplo:** Debe verse algo similar a esto pero con tu dirección IP: `adb connect 127.0.0.1:5555`.
+De igual manera en tu Android aparecerá una ventana que debes permitirle el acceso (Puedes marcar la casilla para permitir siempre el acceso desde este dispositivo Android)
 
     ```bash
     adb connect <Tu dirección IP>:5555
     ```
-    **Ejemplo:** `adb connect 127.0.0.1:5555`
-    De igual manera en tu Android aparecerá una ventana que debes permitirle el acceso (Puedes marcar la casilla para permitir siempre el acceso desde este dispositivo Android)
-    
     ```bash
     adb kill-server
     ```
@@ -108,7 +107,7 @@ chmod +x exclr_es.sh
 
 ## Iniciar
 1. Abrir Termux en Android.
-2. Ejecutar el el comando `./exclr_es.sh`.
+2. Ejecutar el comando `./exclr_es.sh`.
 3. Sigue las instrucciones en el menú interactivo.
 4. Utiliza la opción 4 en el menú principal del script para forzar la detención de Termux.
 
