@@ -1,82 +1,152 @@
-# Administración de Aplicaciones Android con ADB
+# • XClear Android Apps •
+---
+---
+## English version 
+Visit the next link: [Resources](https://github.com/greg4rn/XClear)
 
+---
+---
 ## Índice
 
 1. [Introducción](#introducción)
 2. [Requisitos Previos](#requisitos-previos)
-3. [Configuración de Variables de Entorno](#configuración-de-variables-de-entorno)
-4. [Conexión del Teléfono Android](#conexión-del-teléfono-android)
-5. [Modo Programador y Depuración USB](#modo-programador-y-depuración-usb)
-6. [Comprobación de la Conexión con ADB](#comprobación-de-la-conexión-con-adb)
-7. [Uso](#uso)
-8. [Contribuciones](#contribuciones)
+3. [Configuración por PRIMERA VEZ](#configuración-por-primera-vez)
+4. [Iniciar](#iniciar)
+5. [Exclusión](#exclusión)
+6. [Contribuciones](#contribuciones)
 
-## English version 
-
-Visit the next link: [Resources](https://github.com/greg4rn/XClear)
-
+---
 ## Introducción
-
-Este script proporciona una interfaz para gestionar aplicaciones en dispositivos Android utilizando ADB (Android Debug Bridge). Permite forzar la detención y restablecer permisos en todas las aplicaciones, solo del usuario o solo del sistema. 
+Los script `exclr_es.sh` y `xclear_es.py` permite proporcionar una interfaz para gestionar el funcionamiento y permisos de las aplicaciones en dispositivos Android utilizando comandos ADB (Android Debug Bridge). Estos scripts permitirán forzar la detención y restablecer permisos en todas las aplicaciones del usuario y del sistema.
 
 **¡ADVERTENCIA!**
-El mal uso de estas funciones puede causar problemas en el funcionamiento normal de las aplicaciones y del sistema. Utiliza este código con responsabilidad. No nos hacemos responsables por cualquier inconveniente derivado de su uso indebido.
-
+El mal uso de estas funciones puede causar conflicto en el funcionamiento normal de las aplicaciones y del sistema. Utiliza este código con responsabilidad. No nos hacemos responsables por cualquier inconveniente derivado de su uso indebido.
+---
 ## Requisitos Previos
+Antes de ejecutar el script, asegúrate de tener instaladas las últimas versiones de las siguientes herramientas:
 
-Antes de ejecutar el script, asegúrate de tener instalados los siguientes componentes:
+### Paso 1. En Windows
+Instalar [Minimal ADB and Fastboot Tool](https://androidmtk.com/download-minimal-adb-fastboot-tool); puedes descargarlo desde su página oficial.
 
-1. **ADB (Android Debug Bridge):**
-   - Si no tienes instalado ADB, visita la [página oficial de Minimal ADB](https://androidmtk.com/download-minimal-adb-fastboot-tool) y sigue las instrucciones de instalación.
+### Paso 2. En Android
+**[2.1.]** Descargar e instalar el archivo APK de [Termux](https://termux.dev/), desde su repositorio oficial de [Github](https://github.com/termux/termux-app/releases) o [F-Droid](https://f-droid.org/en/packages/com.termux/).
+*NOTA: La versión de Google Play no es compatible.*
 
-2. **Python 3.x:**
-   - Si no tienes instalado Python 3.x, descárgalo desde la [página oficial de Python](https://www.python.org/downloads/) y sigue las instrucciones de instalación.
+**[2.2.]** Configuración en Android
+1. Definir IP estática en Android cuando se conecte a la red WiFi de confianza.
 
-## Configuración de Variables de Entorno
+**[2.3.]** Activar las Opciones de desarrollador y la Depuración USB en Android.
+* Pasos generales:
+    1. Ir a Configuración de Android.
+    2. Buscar la opción `Acerca del teléfono` y tocar varias veces la opción `Número de compilación` hasta que aparezca el mensaje similar a `¡Ya eres Desarrollador!`.
+    3. En la pantalla principal de Configuración se habrá habilitado `Opciones de Desarrollador`, entra ahí y activa `Depuración USB`.
+**Nota:** Por razones de seguridad se recomienda desactivar las `Opciones de desarrollador` después de ejecutar el script, sin embargo, deberás volver a conectarte a un PC para volver a utilizar el script.
 
-Después de instalar ADB y Python, agrega las siguientes rutas a las variables de entorno de tu sistema. Esto facilitará el acceso a estos programas desde cualquier ubicación en tu terminal.
+### Paso 3. En Termux
+En Android abrimos la app instalada de Termux y ejecutamos los siguientes comandos, donde confirmamos con una `Y` la instalación de las herramientas y con un `Enter` para dejar la configuración por defecto en el caso de las preguntas de `pkg upgrade`.
+```bash
+pkg upgrade
+```
+```bash
+pkg install android-tools
+```
+```bash
+pkg install python3
+```
+```bash
+pip install tqdm
+```
+```bash
+pkg install wget
+```
+### 4. Descargar los scripts
+Descargar los archivos `exclr_es.sh` y `xclear_es.py`:
+```bash
+wget httpshttps://raw.githubusercontent.com/greg4rn/resources/main/Espa%C3%B1ol/exclr_es.sh ; wget https://raw.githubusercontent.com/greg4rn/resources/main/Espa%C3%B1ol/xclear_es.py
+```
+**IMPORTANTE:** Dar permisos de ejecución al script bash
+```bash
+chmod +x exclr_es.sh
+```
+### EXPLICACIÓN
+- `Minimal ADB and Fastboot Tool`: es una herramienta para Windows, que permite ejecutar comandos ADB desde la consola de Windows hacia un dispositivo Android conectado por cable o Wi-Fi.
+- `Termux`: Es un emulador de terminal para Android que permite ejecutar un entorno Linux en un dispositivo Android.
+- Cuando se ejecuta `pkg upgrade`, aparecen algunas preguntas, pero solo en la primera pregunta se confirma la actualización con una `Y`. Habrá aproximadamente 5 preguntas o más, donde en esas preguntas se presiona únicamente la tecla `Enter` para dejarle  la opción por defecto que es `N`.
+- `android-tools`: Permite interactuar mediante consola y comandos ADB, dentro del entorno de Termux y el dispositivo Android conectado por cable o Wi-Fi.
+- `python3`: Permite ejecutar el script de Python.
+- `tqdm`: Sirve para visualizar la barra de progreso del script `xclear_es.py`.
+- `wget`: Permite descargar archivos desde la web.
+- Script Bash `exclr_es.sh`: Permite reducir las líneas de comando a solo la línea de ejecución de este script.
+- Script Python `xclear_es.py`: Permite la funcionalidad principal de este proyecto.
 
-- Para Python:
-  - `%USERPROFILE%\AppData\Local\Programs\Python\Python311\`
+---
 
-- Para ADB:
-  - `C:\Program Files (x86)\Minimal ADB and Fastboot`
+## Configuración por PRIMERA VEZ
+### En Windows
+1. Abrir `Minimal ADB and Fastboot`
+2. Ejecutar los siguientes códigos:
+    ```bash
+    adb kill-server
+    ```
+    ```bash
+    adb tcpip 5555
+    ```
+    En tu terminal Android debe aparecer una ventana que debes permitirle el acceso 2 veces (Puedes marcar la casilla para permitir siempre el acceso desde ese PC, pero no lo recomiendo)
+### En Termux
+1. Desde Android ingresa a Termux y ejecuta los siguientes comandos (aquí debes ingresar la IP estática que definiste en el Wi-Fi de tu Android.)
 
-Añadir estas variables de entorno permitirá ejecutar comandos ADB y Python desde cualquier directorio en tu terminal.
+    ```bash
+    adb connect <Tu dirección IP>:5555
+    ```
+    **Ejemplo:** `adb connect 127.0.0.1:5555`
+    
+    ```bash
+    adb kill-server
+    ```
+    ```bash
+    adb devices
+    ```
+2.	Ejecutar el script
+    ```bash
+    ./exclr_es.sh
+    ```
+---
+## Iniciar
+1. Abrir Termux en Android.
+2. Ejecutar el el comando `./exclr_es.sh`.
+3. Sigue las instrucciones en el menú interactivo.
+4. Utiliza la opción 4 en el menú principal del script para forzar la detención de Termux.
 
-## Conexión del Teléfono Android
+### IMPORTANTE
+La desventaja es que las `Opciones de desarrollador` debe mantenerse habilitado para que funcione el script. En caso de desactivar esta opción, seguir los siguientes pasos:
+1. Conectar el Android al PC mediante cable.
+2. En Windows, abrir `Minimal ADB and Fastboot Tool` y ejecutar el comando:
+    ```bash
+    adb tcpip 5555
+    ```
+3. En Termux, ejecutar el comando
+    ```bash
+    adb connect <Tu dirección IP>:5555
+    ```
+    ```bash
+    adb devices
+    ```
+4. Esto debería solucionar y ya puedes [iniciar](#iniciar) de nuevo el script.
 
-Antes de ejecutar el script, asegúrate de tener tu teléfono Android conectado al PC mediante un cable USB.
+---
+## Exclusión
+Para excluir las apps que no deseas que se detengan o se quiten los permisos, puedes modificar el script `xclear_es.py` en la línea 47. Aquí agregas el nombre del paquete que pertenece a tu app de exclusión.
 
-## Modo Programador y Depuración USB
+```bash
+exclude_packages = ["com.whatsapp",             # Whatsapp
+                    "com.facebook.orca",        # Messenger
+                    "com.touchtype.swiftkey",   # Teclado
+                    "com.microsoft.launcher",   # Launcher, pantalla principal
+                    "com.android.systemui",     # Fondo de pantalla
+                    "com.termux"]               # Termux, se cierra con la Opción "4. Salir".
+```
 
-Para que ADB funcione correctamente, activa el Modo Programador y la Depuración USB en tu teléfono Android. Sigue estos pasos generales:
-
-1. Ve a la configuración del teléfono.
-2. Busca la opción "Acerca del teléfono" y tócala varias veces hasta que aparezca "Modo Desarrollador".
-3. Dentro de "Opciones de Desarrollador", activa "Depuración USB".
-
-**Nota:** Desactiva la "Depuración USB" después de usar el script por razones de seguridad.
-
-## Comprobación de la Conexión con ADB
-
-Para comprobar si tu teléfono Android está correctamente conectado a la PC a través de ADB, sigue estos pasos:
-
-1. Abre tu terminal (cmd, PowerShell o tu terminal preferido compatible con las variables de entorno).
-2. Ejecuta el siguiente comando: `adb devices`
-3. Deberías ver tu dispositivo Android en la lista de dispositivos conectados.
-
-## Resumen
-
-1. Desde Termux, descarga con `wget` los archivos `xclear_es.py`y `exclr_es.sh`.
-2. Dale permiso de ejecución con el siguiente comando:
-   ```bash
-   chmod +x exclr_es.sh
-   ```
-3. Dale clic [AQUÍ](https://github.com/greg4rn/resources/blob/main/Espa%C3%B1ol/Instrucciones.md) para más detalles.
-4. Ejecuta el script con el comando `./exclr_es.sh`.
-5. Sigue las instrucciones en el menú interactivo.
-
+---
 ## Contribuciones
 
 ¡Tu contribución es bienvenida! Si encuentras mejoras o tienes sugerencias, no dudes en contribuir. Abre un problema para discutir cambios o envía una solicitud de extracción con tus mejoras.
