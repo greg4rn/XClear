@@ -21,7 +21,7 @@ pkg install wget
 ```
 Seguidamente descargaremos los 2 archivos necesarios `xclear.py` (script) y `exclr.sh` (ejecutable)
 ```bash
-wget https://raw.githubusercontent.com/greg4rn/resources/main/xclear_es.py ; wget https://raw.githubusercontent.com/greg4rn/resources/main/exclr_es.sh
+wget https://raw.githubusercontent.com/greg4rn/resources/main/Espa%C3%B1ol/xclear_es.py ; wget https://raw.githubusercontent.com/greg4rn/resources/main/Espa%C3%B1ol/exclr_es.sh
 ```
 
 ### Detalles: 
