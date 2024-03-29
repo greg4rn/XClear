@@ -22,7 +22,7 @@ Next, we will download the 2 necessary files xclear.py (script) and exclr.sh (ex
 wget https://raw.githubusercontent.com/greg4rn/resources/main/xclear.py ; wget https://raw.githubusercontent.com/greg4rn/resources/main/exclr.sh
 ```
 
-### Details:
+### Details: 
 - When we run `pkg upgrade`, we will be prompted with some questions, but only on the 1st question do we confirm the installation with a `Y` and then press `Enter`. There will be about 6 more questions, and for these, we just press `Enter` to leave it with the default option, which is `N`.
 - `android-tools`: It is used to interact with connected Android devices and execute ADB commands.
 - `python3`: It is used to execute the Python script.
