@@ -13,7 +13,7 @@ def run_adb_command(command):
 def execute_adb_command(command):
     return subprocess.call(command)
 
-def process_packages(package_names, operation_name, usr):
+def process_packages(package_names, operation_name, usr, exclude_packages):
     total_packages = len(package_names)
     max_package_name_length = max(len(package_name) for package_name in package_names)
 
@@ -26,23 +26,31 @@ def process_packages(package_names, operation_name, usr):
 
     with tqdm(total=total_packages, desc=f"Progreso ({operation_name})", unit="app", position=1, leave=False) as progress_bar:
         for package_name in package_names:
-            sys.stdout.write(f"\rProcesando paquete: {package_name.ljust(max_package_name_length)}")
-            sys.stdout.flush()
+            if package_name not in exclude_packages:
+                sys.stdout.write(f"\rProcesando paquete: {package_name.ljust(max_package_name_length)}")
+                sys.stdout.flush()
 
-            if "Forzar detención" in operation_name:
-                execute_adb_command(["adb", "shell", "am", "force-stop", package_name])
-            if "Remover permisos" in operation_name:
-                execute_adb_command(["adb", "shell", "pm", "reset-permissions", package_name])
-            if "Forzar detención y remover permisos" in operation_name:
-                execute_adb_command(["adb", "shell", "am", "force-stop", package_name])
-                execute_adb_command(["adb", "shell", "pm", "reset-permissions", package_name])
+                if "Forzar detención" in operation_name:
+                    execute_adb_command(["adb", "shell", "am", "force-stop", package_name])
+                if "Remover permisos" in operation_name:
+                    execute_adb_command(["adb", "shell", "pm", "reset-permissions", package_name])
+                if "Forzar detención y remover permisos" in operation_name:
+                    execute_adb_command(["adb", "shell", "am", "force-stop", package_name])
+                    execute_adb_command(["adb", "shell", "pm", "reset-permissions", package_name])
 
-            progress_bar.update(1)
+                progress_bar.update(1)
 
     print("\r" + " " * (len(max(package_names, key=len)) + 18) + "\r")
-    print(f"Se completó la operación '{operation_name}' en {len(package_names)} aplicaciones.")
+    print(f"Se completó la operación '{operation_name}' en {total_packages - len(exclude_packages)} aplicaciones.")
 
 def main():
+    exclude_packages = ["com.whatsapp",             # Whatsapp
+                        "com.facebook.orca",        # Messenger
+                        "com.touchtype.swiftkey",   # Teclado
+                        "com.microsoft.launcher",   # Launcher, pantalla principal
+                        "com.android.systemui",     # Fondo de pantalla
+                        "com.termux"]               # Lista de paquetes a excluir, porque quiero que estén funcionando en todo momento, ni quiero que estas apps pierdan el acceso a mis contactos, almacenamient, cámara, etc.
+
     while True:
         clear_screen()
 
@@ -65,11 +73,11 @@ def main():
         choice = input("Ingresa el número de la opción [1 ~ 4]: ")
 
         if choice == "4":
+            execute_adb_command(["adb", "shell", "am", "force-stop", "com.termux"])
             break
         elif choice in ["1", "2", "3"]:
             usr = "USUARIO" if choice == "1" else ("SISTEMA" if choice == "2" else "USUARIO y SISTEMA")
-            #operation_name = input("\nSelecciona la operación:\n (1. Forzar detención, 2. Remover permisos, 3. Forzar detención y remover permisos): ")
-            print ("\n\nAPLICACIONES DEL",usr,":: ¿Qué deseas hacer?\n1. Forzar detención\n2. Remover permisos\n3. Forzar detención y remover permisos")
+            print("\n\nAPLICACIONES DEL", usr, ":: ¿Qué deseas hacer?\n1. Forzar detención\n2. Remover permisos\n3. Forzar detención y remover permisos")
             operation_name = input("\nSelecciona la operación: ")
 
             if operation_name in ["1", "2", "3"]:
@@ -84,7 +92,7 @@ def main():
                     "Remover permisos"
                 )
 
-                process_packages(package_names, operation_name, usr)
+                process_packages(package_names, operation_name, usr, exclude_packages)
                 input("\nPresiona Enter para continuar...")
             else:
                 print("Operación no válida. Selecciona una operación válida (1, 2, 3).\n")
