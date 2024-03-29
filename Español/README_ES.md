@@ -1,8 +1,5 @@
 # • XClear Android Apps •
 
-## English version 
-Visit the next link: [Resources](https://github.com/greg4rn/XClear)
-
 ## Índice
 
 1. [Introducción](#introducción)
@@ -11,6 +8,9 @@ Visit the next link: [Resources](https://github.com/greg4rn/XClear)
 4. [Iniciar](#iniciar)
 5. [Exclusión](#exclusión)
 6. [Contribuciones](#contribuciones)
+
+## English version 
+Visit the next link: [Resources](https://github.com/greg4rn/XClear)
 
 ## Introducción
 Los script `exclr_es.sh` y `xclear_es.py` permite proporcionar una interfaz para gestionar el funcionamiento y permisos de las aplicaciones en dispositivos Android utilizando comandos ADB (Android Debug Bridge). Estos scripts permitirán forzar la detención y restablecer permisos en todas las aplicaciones del usuario y del sistema.
