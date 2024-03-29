@@ -1,11 +1,8 @@
 # • XClear Android Apps •
----
----
+
 ## English version 
 Visit the next link: [Resources](https://github.com/greg4rn/XClear)
 
----
----
 ## Índice
 
 1. [Introducción](#introducción)
@@ -15,13 +12,12 @@ Visit the next link: [Resources](https://github.com/greg4rn/XClear)
 5. [Exclusión](#exclusión)
 6. [Contribuciones](#contribuciones)
 
----
 ## Introducción
 Los script `exclr_es.sh` y `xclear_es.py` permite proporcionar una interfaz para gestionar el funcionamiento y permisos de las aplicaciones en dispositivos Android utilizando comandos ADB (Android Debug Bridge). Estos scripts permitirán forzar la detención y restablecer permisos en todas las aplicaciones del usuario y del sistema.
 
 **¡ADVERTENCIA!**
 El mal uso de estas funciones puede causar conflicto en el funcionamiento normal de las aplicaciones y del sistema. Utiliza este código con responsabilidad. No nos hacemos responsables por cualquier inconveniente derivado de su uso indebido.
----
+
 ## Requisitos Previos
 Antes de ejecutar el script, asegúrate de tener instaladas las últimas versiones de las siguientes herramientas:
 
@@ -79,8 +75,6 @@ chmod +x exclr_es.sh
 - Script Bash `exclr_es.sh`: Permite reducir las líneas de comando a solo la línea de ejecución de este script.
 - Script Python `xclear_es.py`: Permite la funcionalidad principal de este proyecto.
 
----
-
 ## Configuración por PRIMERA VEZ
 ### En Windows
 1. Abrir `Minimal ADB and Fastboot`
@@ -110,7 +104,7 @@ chmod +x exclr_es.sh
     ```bash
     ./exclr_es.sh
     ```
----
+
 ## Iniciar
 1. Abrir Termux en Android.
 2. Ejecutar el el comando `./exclr_es.sh`.
@@ -133,7 +127,7 @@ La desventaja es que las `Opciones de desarrollador` debe mantenerse habilitado 
     ```
 4. Esto debería solucionar y ya puedes [iniciar](#iniciar) de nuevo el script.
 
----
+
 ## Exclusión
 Para excluir las apps que no deseas que se detengan o se quiten los permisos, puedes modificar el script `xclear_es.py` en la línea 47. Aquí agregas el nombre del paquete que pertenece a tu app de exclusión.
 
@@ -146,7 +140,6 @@ exclude_packages = ["com.whatsapp",             # Whatsapp
                     "com.termux"]               # Termux, se cierra con la Opción "4. Salir".
 ```
 
----
 ## Contribuciones
 
 ¡Tu contribución es bienvenida! Si encuentras mejoras o tienes sugerencias, no dudes en contribuir. Abre un problema para discutir cambios o envía una solicitud de extracción con tus mejoras.
