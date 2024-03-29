@@ -13,7 +13,7 @@ def run_adb_command(command):
 def execute_adb_command(command):
     return subprocess.call(command)
 
-def process_packages(package_names, operation_name, usr):
+def process_packages(package_names, operation_name, usr, exclude_packages):
     total_packages = len(package_names)
     max_package_name_length = max(len(package_name) for package_name in package_names)
 
@@ -26,23 +26,31 @@ def process_packages(package_names, operation_name, usr):
 
     with tqdm(total=total_packages, desc=f"Progress ({operation_name})", unit="app", position=1, leave=False) as progress_bar:
         for package_name in package_names:
-            sys.stdout.write(f"\rProcessing package: {package_name.ljust(max_package_name_length)}")
-            sys.stdout.flush()
+            if package_name not in exclude_packages:
+                sys.stdout.write(f"\rProcessing package: {package_name.ljust(max_package_name_length)}")
+                sys.stdout.flush()
 
-            if "Force stop" in operation_name:
-                execute_adb_command(["adb", "shell", "am", "force-stop", package_name])
-            if "Remove permissions" in operation_name:
-                execute_adb_command(["adb", "shell", "pm", "reset-permissions", package_name])
-            if "Force stop and remove permissions" in operation_name:
-                execute_adb_command(["adb", "shell", "am", "force-stop", package_name])
-                execute_adb_command(["adb", "shell", "pm", "reset-permissions", package_name])
+                if "Force stop" in operation_name:
+                    execute_adb_command(["adb", "shell", "am", "force-stop", package_name])
+                if "Remove permissions" in operation_name:
+                    execute_adb_command(["adb", "shell", "pm", "reset-permissions", package_name])
+                if "Force stop and remove permissions" in operation_name:
+                    execute_adb_command(["adb", "shell", "am", "force-stop", package_name])
+                    execute_adb_command(["adb", "shell", "pm", "reset-permissions", package_name])
 
-            progress_bar.update(1)
+                progress_bar.update(1)
 
     print("\r" + " " * (len(max(package_names, key=len)) + 18) + "\r")
-    print(f"Operation '{operation_name}' completed on {len(package_names)} applications.")
+    print(f"Operation '{operation_name}' completed on {total_packages - len(exclude_packages)} applications.")
 
 def main():
+    exclude_packages = ["com.whatsapp",             # Whatsapp
+                        "com.facebook.orca",        # Messenger
+                        "com.touchtype.swiftkey",   # Keyboard
+                        "com.microsoft.launcher",   # Launcher, main screen
+                        "com.android.systemui",     # Wallpaper
+                        "com.termux"]               # List of packages to exclude, because I want them to be running at all times, nor do I want these apps to lose access to my contacts, storage, camera, etc.
+
     while True:
         clear_screen()
 
@@ -84,7 +92,7 @@ def main():
                     "Remove permissions"
                 )
 
-                process_packages(package_names, operation_name, usr)
+                process_packages(package_names, operation_name, usr, exclude_packages)
                 input("\nPress Enter to continue...")
             else:
                 print("Invalid operation. Select a valid operation (1, 2, 3).\n")
