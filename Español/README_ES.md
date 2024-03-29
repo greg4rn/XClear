@@ -17,7 +17,7 @@ Visit the next link: [Resources](https://github.com/greg4rn/XClear)
 
 ## Introducción
 
-Este script proporciona una interfaz para gestionar aplicaciones en dispositivos Android utilizando ADB (Android Debug Bridge). Permite forzar la detención y restablecer permisos en todas las aplicaciones, solo del usuario o solo del sistema.
+Este script proporciona una interfaz para gestionar aplicaciones en dispositivos Android utilizando ADB (Android Debug Bridge). Permite forzar la detención y restablecer permisos en todas las aplicaciones, solo del usuario o solo del sistema. 
 
 **¡ADVERTENCIA!**
 El mal uso de estas funciones puede causar problemas en el funcionamiento normal de las aplicaciones y del sistema. Utiliza este código con responsabilidad. No nos hacemos responsables por cualquier inconveniente derivado de su uso indebido.
