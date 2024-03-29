@@ -24,7 +24,7 @@ Seguidamente descargaremos los 2 archivos necesarios `xclear.py` (script) y `exc
 wget https://raw.githubusercontent.com/greg4rn/resources/main/xclear_es.py ; wget https://raw.githubusercontent.com/greg4rn/resources/main/exclr_es.sh
 ```
 
-### Detalles:
+### Detalles: 
 
 - Cuando ejecutemos `pkg upgrade` nos aparecerán algunas preguntas, pero solo en la 1era pregunta confirmamos la instalación con una `Y` y luego presionamos `Enter`. Habrá como 6 preguntas más y en estas presionamos únicamente `Enter` para dejarle con la opción por defecto que es `N`.
 - `android-tools`: Nos sirve para interactuar con dispositivos Android conectados y ejecutar comandos ADB.
