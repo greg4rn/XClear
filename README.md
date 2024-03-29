@@ -79,7 +79,7 @@ To check if your Android phone is correctly connected to the PC via ADB, follow 
    ```bash
    chmod +x exclr_es.sh
    ```
-3. Click [HERE](https://github.com/greg4rn/XClear/blob/main/Instrucciones.md) for more details.
+3. Click [HERE](https://github.com/greg4rn/XClear/blob/main/Instructions.md) for more details.
 4. Run the script with the command `./exclr_es.sh`
 5. Follow the instructions in the interactive menu.
 
