@@ -63,7 +63,6 @@ def main():
         print("Misuse of these functions can cause problems with the normal operation of applications and the system.")
         print("Use this code responsibly. We are not responsible for any problems arising from misuse.\n")
 
-
         print("********************\n* CHOOSE AN OPTION *\n********************")
         print("1. User Applications")
         print("2. System Applications")
