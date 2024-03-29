@@ -66,12 +66,15 @@ Para comprobar si tu teléfono Android está correctamente conectado a la PC a t
 2. Ejecuta el siguiente comando: `adb devices`
 3. Deberías ver tu dispositivo Android en la lista de dispositivos conectados.
 
-## Uso
+## Resumen
 
-1. Clona el repositorio o descarga el script.
-2. Abre tu terminal.
-3. Navega al directorio donde se encuentra el script.
-4. Ejecuta el script con el comando `python adb_fsrp_es.py`.
+1. Desde Termux, descarga con `wget` los archivos `xclear_es.py`y `exclr_es.sh`.
+2. Dale permiso de ejecución con el siguiente comando:
+   ```bash
+   chmod +x exclr_es.sh
+   ```
+3. Dale clic [AQUÍ](https://github.com/greg4rn/resources/blob/main/Instrucciones.md) para más detalles.
+4. Ejecuta el script con el comando `./exclr_es.sh`.
 5. Sigue las instrucciones en el menú interactivo.
 
 ## Contribuciones
