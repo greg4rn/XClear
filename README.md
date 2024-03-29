@@ -74,6 +74,15 @@ To check if your Android phone is correctly connected to the PC via ADB, follow 
 4. Run the script with the command `python adb_fsrp_en.py`.
 5. Follow the instructions in the interactive menu.
 
+1. From Termux, download the files xclear_es.py and exclr_es.sh using wget.
+2. Grant execution permission with the following command:
+   ```bash
+   chmod +x exclr_es.sh
+   ```
+3. Click [HERE](https://github.com/greg4rn/XClear/blob/main/Instrucciones.md) for more details.
+4. Run the script with the command `./exclr_es.sh`
+5. Follow the instructions in the interactive menu.
+
 ## Contributions
 
 Your contribution is welcome! If you find improvements or have suggestions, feel free to contribute. Open an issue to discuss changes or submit a pull request with your enhancements.
