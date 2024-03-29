@@ -1,4 +1,4 @@
-# • XClear Android Apps •
+# • [ESPAÑOL] XClear Android Apps •
 
 ## Índice
 
@@ -93,6 +93,7 @@ chmod +x exclr_es.sh
     adb connect <Tu dirección IP>:5555
     ```
     **Ejemplo:** `adb connect 127.0.0.1:5555`
+    De igual manera en tu Android aparecerá una ventana que debes permitirle el acceso (Puedes marcar la casilla para permitir siempre el acceso desde este dispositivo Android)
     
     ```bash
     adb kill-server
@@ -100,7 +101,7 @@ chmod +x exclr_es.sh
     ```bash
     adb devices
     ```
-2.	Ejecutar el script
+3.	Ejecutar el script
     ```bash
     ./exclr_es.sh
     ```
