@@ -13,7 +13,7 @@
 
 ## English version 
 
-Visit the next link: [Resources](https://github.com/greg4rn/resources)
+Visit the next link: [Resources](https://github.com/greg4rn/XClear)
 
 ## Introducción
 
@@ -73,7 +73,7 @@ Para comprobar si tu teléfono Android está correctamente conectado a la PC a t
    ```bash
    chmod +x exclr_es.sh
    ```
-3. Dale clic [AQUÍ](https://github.com/greg4rn/resources/blob/main/Instrucciones.md) para más detalles.
+3. Dale clic [AQUÍ](https://github.com/greg4rn/resources/blob/main/Espa%C3%B1ol/Instrucciones.md) para más detalles.
 4. Ejecuta el script con el comando `./exclr_es.sh`.
 5. Sigue las instrucciones en el menú interactivo.
 
