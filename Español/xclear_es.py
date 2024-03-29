@@ -63,7 +63,6 @@ def main():
         print("El mal uso de estas funciones puede causar problemas en el funcionamiento normal de las aplicaciones y del sistema.")
         print("Utiliza este código con responsabilidad. No nos hacemos responsables por cualquier inconveniente derivado de su uso indebido.\n")
 
-
         print("********************\n* ELIGE UNA OPCIÓN *\n********************")
         print("1. Aplicaciones del USUARIO")
         print("2. Aplicaciones del SISTEMA")
