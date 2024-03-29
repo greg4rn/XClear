@@ -1,7 +1,7 @@
 #!/bin/sh
 adb devices
 
-python xclear_en.py
+python xclear.py
 
 adb kill-server
 pid=$(pgrep com.termux)
